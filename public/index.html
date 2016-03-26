@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="listaContatos">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Lista de contatos</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<style>
+		html { overflow-y: scrool; }
+		body { padding-top: 50px; }
+		#lista { margin-bottom: 30px; }
+		form button { margin-top: 25px; }
+		form .form-group:first-child { padding-left: 0; }
+	</style>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+	<script src="core.js"></script>
+</head>
+<body ng-controller="mainController">
+	<div class="container">
+		<div class="jumbotron text-center">
+			<h1>Lista de contatos <span class="label label-info">{{ contatos.length }}</span> </h1>
+		</div>
+
+		<div id="lista">
+			<table class="table table-striped">
+				<tr>
+					<th>Nome</th>
+					<th>E-mail</th>
+					<th>Telefone</th>
+					<th>Opções</th>
+				</tr>
+				<tr ng-repeat="contato in contatos">
+					<td>{{ contato.nome }}</td>
+					<td>{{ contato.email }}</td>
+					<td>{{ contato.telefone }}</td>
+					<td>
+						<button type="button" class="btn btn-default" ng-click="editarContato(contato._id)">Editar</button>
+						<button type="button" class="btn btn-primary" ng-click="deletarContato(contato._id)">Remover</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div id="contato-form">
+			<hr>
+			<form>
+				<div class="form-group col-md-3">
+					<label for="nomeContato">Nome</label>
+					<input type="text" class="form-control" id="nomeContato" placeholder="Nome e sobrenome" ng-model="formContato.nome">
+				</div>
+				<div class="form-group col-md-3">
+					<label for="emailContato">E-mail</label>
+					<input type="text" class="form-control" id="emailContato" placeholder="example@example.com" ng-model="formContato.email">
+				</div>
+				<div class="form-group col-md-3">
+					<label for="telefoneContato">Telefone</label>
+					<input type="text" class="form-control" id="telefoneContato" placeholder="(XX) XXXX-XXXX" ng-model="formContato.telefone">
+				</div>
+				<div class="form-group col-md-3">
+					<button type="submit" class="btn btn-primary" ng-click="criarContato()">Criar</button>
+					<button type="submit" class="btn btn-info" ng-click="atualizarContato()">Atualizar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
